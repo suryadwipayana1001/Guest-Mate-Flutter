@@ -31,7 +31,7 @@ class _CustomButtonState extends State<CustomButton> {
         fixedSize: Size(widget.width ?? SizeConfig(context).appWidth(100),
             widget.height ?? 45.0),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(25.0),
         ),
       ),
       onPressed: widget.onPressed,

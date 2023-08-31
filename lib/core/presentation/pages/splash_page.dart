@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forecasting/core/core.dart';
 import 'package:forecasting/features/landing/presentation/pages/landing_page.dart';
-import 'package:forecasting/features/result/presentation/providers/result_provider.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -15,7 +13,6 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    context.read<ResultProvider>().initializeRewardAd();
     int delay = 3;
     Future.delayed(
       Duration(seconds: delay),
@@ -26,6 +23,7 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    appLoc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: primary,
       body: SafeArea(
@@ -39,7 +37,7 @@ class _SplashPageState extends State<SplashPage> {
                 height: 200,
               ),
               Text(
-                'Tebak Jodoh',
+                appLoc.appName,
                 style: landingTextSyle,
               ),
             ],

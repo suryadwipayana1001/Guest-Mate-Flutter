@@ -68,13 +68,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: red, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: border, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
               isDense: true,
@@ -83,13 +83,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
               focusedErrorBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: red, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: border, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
             ),

@@ -16,20 +16,16 @@ TextStyle loadingTextStyle = const TextStyle(
   fontWeight: FontWeight.w500,
   color: white,
 );
-//END JODOH
-
-TextStyle normalTextStyle = const TextStyle(
-    fontSize: textSmall,
-    color: black,
-    fontWeight: FontWeight.w400,
-    wordSpacing: 1.0);
-
 TextStyle titleTextStyle = const TextStyle(
   fontSize: textMedium,
   fontWeight: FontWeight.w500,
   color: black,
 );
-
+TextStyle whiteTitleTextStyle = const TextStyle(
+  fontSize: textLarge,
+  fontWeight: FontWeight.w500,
+  color: white,
+);
 TextStyle normalBoldTextStyle = const TextStyle(
   fontSize: textMedium,
   color: black,
@@ -40,6 +36,7 @@ TextStyle smallLightTextStyle = const TextStyle(
   fontWeight: FontWeight.w300,
   color: black,
 );
+
 TextStyle lightTextStyle = const TextStyle(
   fontSize: textSmall,
   fontWeight: FontWeight.w300,
@@ -50,37 +47,4 @@ TextStyle buttonTextStyle = const TextStyle(
   fontSize: textMedium,
   fontWeight: FontWeight.w500,
   color: white,
-);
-
-TextStyle questationTextStyle = const TextStyle(
-  fontSize: textLarge,
-  fontWeight: FontWeight.w500,
-  color: black,
-);
-
-TextStyle exampleAnswerTextStyle = const TextStyle(
-  fontSize: textMedium,
-  fontWeight: FontWeight.w600,
-  color: black,
-);
-
-TextStyle contentPerfectPartnerTextStyle = const TextStyle(
-  fontSize: textSmall,
-  color: black,
-  fontWeight: FontWeight.w400,
-);
-
-TextStyle normalBlurTextStyle = TextStyle(
-  fontSize: textSmall,
-  fontWeight: FontWeight.w600,
-  foreground: Paint()
-    ..style = PaintingStyle.fill
-    ..color = black
-    ..maskFilter = MaskFilter.blur(BlurStyle.normal, 2.5),
-);
-
-TextStyle seeVideoTextStyle = const TextStyle(
-  fontSize: textExtrasmall,
-  color: black,
-  fontWeight: FontWeight.w600,
 );

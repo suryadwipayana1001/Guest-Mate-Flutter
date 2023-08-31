@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:forecasting/core/core.dart';
+import 'package:forecasting/core/static/color.dart';
+import 'package:forecasting/core/static/dimens.dart';
+import 'package:forecasting/core/static/style.dart';
 
 class CustomDropdown extends StatefulWidget {
-  final List<String> dropdownList;
+  final List<dynamic> dropdownList;
   final String title;
-  final String? value;
+  final dynamic value;
   final FormFieldValidator? fieldValidator;
-  final void Function(String?)? onChanged;
+  final void Function(dynamic)? onChanged;
   const CustomDropdown({
     super.key,
     this.fieldValidator,
@@ -28,7 +30,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: sizeSmall),
+          padding: const EdgeInsets.symmetric(vertical: sizeMedium),
           child: Text(
             widget.title,
             style: boldTextStyle,
@@ -36,34 +38,34 @@ class _CustomDropdownState extends State<CustomDropdown> {
         ),
         ButtonTheme(
           alignedDropdown: true,
-          child: DropdownButtonFormField<String>(
+          child: DropdownButtonFormField(
             elevation: 2,
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(25.0),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: border, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
               focusedErrorBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: red, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.red, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: border, width: 1.0),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15.0),
+                  Radius.circular(25.0),
                 ),
               ),
               filled: true,
@@ -74,21 +76,19 @@ class _CustomDropdownState extends State<CustomDropdown> {
             value: widget.value ?? widget.dropdownList.first,
             validator: widget.fieldValidator,
             icon: const Icon(
-              Icons.keyboard_arrow_down_rounded,
-              color: border,
-              size: 40.0,
+              Icons.arrow_drop_down_rounded,
+              color: black,
             ),
             iconSize: 50.0,
-            style: lightTextStyle,
-            onChanged: widget.onChanged,
-            items: widget.dropdownList.map<DropdownMenuItem<String>>(
-              (String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
+            items: widget.dropdownList.map<DropdownMenuItem<dynamic>>(
+              (dynamic option) {
+                return DropdownMenuItem<dynamic>(
+                  value: option,
+                  child: Text(option is String ? option : option.title),
                 );
               },
             ).toList(),
+            onChanged: widget.onChanged,
           ),
         ),
       ],

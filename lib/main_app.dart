@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:forecasting/core/presentation/providers/core_provider.dart';
 import 'package:forecasting/core/presentation/providers/loading_provider.dart';
-import 'package:forecasting/features/result/presentation/providers/result_provider.dart';
 import 'package:provider/provider.dart';
 import 'core/core.dart';
 import 'core/route/route.dart' as router;
@@ -14,6 +14,8 @@ class MainApp extends StatefulWidget {
   State<MainApp> createState() => _MainAppState();
 }
 
+final session = locator<Session>();
+
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
@@ -21,24 +23,49 @@ class _MainAppState extends State<MainApp> {
       providers: [
         ChangeNotifierProvider<LoadingProvider>(
             create: (_) => locator<LoadingProvider>()),
-        ChangeNotifierProvider<LandingProvider>(
-            create: (_) => locator<LandingProvider>()),
-        ChangeNotifierProvider<ResultProvider>(
-            create: (_) => locator<ResultProvider>()),
+        ChangeNotifierProvider<CoreProvider>(
+            create: (_) => locator<CoreProvider>()),
       ],
       builder: (context, _) {
-        return MaterialApp(
-          navigatorKey: locator<GlobalKey<NavigatorState>>(),
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: router.generateRoute,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          home: const SplashPage(),
-        );
+        return Consumer<CoreProvider>(builder: (context, provider, _) {
+          return MaterialApp(
+            navigatorKey: locator<GlobalKey<NavigatorState>>(),
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: router.generateRoute,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            locale: Locale(
+                "${session.isLang != '' ? session.isLang : provider.language!.value}",
+                ''),
+            supportedLocales: const [
+              Locale('en', ''),
+              Locale('id', ''),
+              Locale('ar', ''),
+              Locale('zh', ''),
+              Locale('da', ''),
+              Locale('nl', ''),
+              Locale('fi', ''),
+              Locale('fr', ''),
+              Locale('de', ''),
+              Locale('el', ''),
+              Locale('it', ''),
+              Locale('ja', ''),
+              Locale('ko', ''),
+              Locale('no', ''),
+              Locale('pl', ''),
+              Locale('pt', ''),
+              Locale('ru', ''),
+              Locale('es', ''),
+              Locale('sv', ''),
+              Locale('tr', '')
+            ],
+            home: const SplashPage(),
+          );
+        });
       },
     );
   }

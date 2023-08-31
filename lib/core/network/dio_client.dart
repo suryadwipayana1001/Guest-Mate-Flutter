@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:dio_logger/dio_logger.dart';
+import 'package:forecasting/core/network/app_interceptor.dart';
 import '../core.dart';
 
 class DioClient {

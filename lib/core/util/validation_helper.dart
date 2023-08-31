@@ -19,7 +19,7 @@ class ValidationHelper {
     return (value) {
       final strValue = value as String;
       if (strValue.isEmpty) {
-        message = requiredMessage ?? 'Tidak Boleh Kosong !!!';
+        message = requiredMessage ?? appLoc.cannotEmpty;
         isError(true);
       }
       return message;

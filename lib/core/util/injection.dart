@@ -2,10 +2,10 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:forecasting/core/core.dart';
+import 'package:forecasting/core/presentation/providers/core_provider.dart';
 import 'package:forecasting/features/result/data/datasource/result_datasource.dart';
 import 'package:forecasting/features/result/data/repository/result_repository.dart';
 import 'package:forecasting/features/result/domain/usecase/result_usecase.dart';
-import 'package:forecasting/features/result/presentation/providers/result_provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,9 +16,8 @@ final locator = GetIt.instance;
 Future<void> locatorInit() async {
   //Provider
   locator.registerFactory<LoadingProvider>(() => LoadingProvider());
-  locator.registerFactory<LandingProvider>(() => LandingProvider());
-  locator.registerFactory<ResultProvider>(
-      () => ResultProvider(resultQuestation: locator()));
+  locator.registerFactory<CoreProvider>(
+      () => CoreProvider(resultQuestation: locator()));
   //DataSource
   locator.registerLazySingleton<ResultDatasource>(
       () => ResultDataSourceImplementation(dio: locator<Dio>()));
