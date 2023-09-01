@@ -20,5 +20,7 @@
     "childName": "Lapsen nimi",
     "guessFutureChild": "Arvaa tulevan lapsesi nimi",
     "adsWait": "Odota hetki, valmistelemme mainosta, yritä uudelleen myöhemmin",
-    "cannotEmpty": "Ei saa olla tyhjä !!!"
+    "cannotEmpty": "Ei saa olla tyhjä !!!",
+    "pleaseWait": "Odota hetki...",
+    "letsJoin": "Liity mukaan"
 }

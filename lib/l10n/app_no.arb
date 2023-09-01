@@ -20,5 +20,8 @@
     "childName": "Barnets navn",
     "guessFutureChild": "Gjett navnet på ditt fremtidige barn",
     "adsWait": "Vennligst vent, vi forbereder en annonse, prøv igjen senere",
-    "cannotEmpty": "Kan ikke være tomt !!!"
+    "cannotEmpty": "Kan ikke være tomt !!!",
+    "pleaseWait": "Vennligst vent...",
+    "letsJoin": "La oss bli med"
+    
 }

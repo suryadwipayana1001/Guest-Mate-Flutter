@@ -132,6 +132,11 @@ class CoreProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  set setResult(val) {
+    _result = val;
+    notifyListeners();
+  }
+
   bool get hobbyError => _hobbyError;
   bool get nameError => _nameError;
   bool get ageError => _ageError;

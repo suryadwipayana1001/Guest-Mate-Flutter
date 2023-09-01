@@ -20,5 +20,7 @@
     "childName":"Nama Anak",
     "guessFutureChild" : "Tebak nama anakmu nanti",
     "adsWait":"Harap tunggu, kami sedang menyiapkan iklan, silakan coba lagi",
-    "cannotEmpty":"Tidak Boleh Kosong !!!"
+    "cannotEmpty":"Tidak Boleh Kosong !!!",
+    "pleaseWait":"Harap tunggu ...",
+    "letsJoin": "Ayo Bergabung"
 }

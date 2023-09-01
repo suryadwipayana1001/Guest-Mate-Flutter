@@ -20,5 +20,7 @@
     "childName": "자녀 이름",
     "guessFutureChild": "당신의 미래 자녀 이름 맞추기",
     "adsWait": "잠시만 기다려주세요. 광고를 준비 중입니다. 나중에 다시 시도해주세요.",
-    "cannotEmpty": "비워 둘 수 없습니다 !!!"
+    "cannotEmpty": "비워 둘 수 없습니다 !!!",
+    "pleaseWait": "기다려주세요...",
+    "letsJoin": "함께 참여해요"
 }

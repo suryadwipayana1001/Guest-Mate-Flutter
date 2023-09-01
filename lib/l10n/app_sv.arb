@@ -20,5 +20,7 @@
     "childName": "Barnets namn",
     "guessFutureChild": "Gissa namnet på ditt framtida barn",
     "adsWait": "Vänta vänligen, vi förbereder en annons. Försök igen senare",
-    "cannotEmpty": "Får inte vara tomt !!!"
+    "cannotEmpty": "Får inte vara tomt !!!",
+    "pleaseWait": "Vänta en stund...",
+    "letsJoin": "Låt oss gå med"
 }

@@ -20,5 +20,7 @@
     "childName": "子女姓名",
     "guessFutureChild": "猜测您未来子女的姓名",
     "adsWait": "请稍候，我们正在准备广告，请稍后重试",
-    "cannotEmpty": "不能为空！！！"
+    "cannotEmpty": "不能为空！！！",
+    "pleaseWait": "请稍候...",
+    "letsJoin": "一起加入吧"
 }

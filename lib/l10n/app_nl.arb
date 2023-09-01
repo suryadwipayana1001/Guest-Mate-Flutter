@@ -20,5 +20,7 @@
     "childName": "Naam kind",
     "guessFutureChild": "Raad de naam van je toekomstige kind",
     "adsWait": "Even geduld aub, we bereiden een advertentie voor, probeer het later opnieuw",
-    "cannotEmpty": "Mag niet leeg zijn !!!"
+    "cannotEmpty": "Mag niet leeg zijn !!!",
+    "pleaseWait": "Even geduld aub...",
+    "letsJoin": "Laten we meedoen"
 }

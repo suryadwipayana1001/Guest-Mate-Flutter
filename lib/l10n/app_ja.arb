@@ -20,5 +20,7 @@
   "childName":"子供の名前",
   "guessFutureChild" : "あなたの将来の子供の名前を推測してください",
   "adsWait": "広告を準備中です。しばらくお待ちください。",
-  "cannotEmpty": "空白にできません！！！"
+  "cannotEmpty": "空白にできません！！！",
+  "pleaseWait": "お待ちください...",
+  "letsJoin": "参加しよう"
 }

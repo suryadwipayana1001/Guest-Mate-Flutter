@@ -20,5 +20,7 @@
   "childName":"Child's Name",
   "guessFutureChild" : "Guess your future child's name",
   "adsWait":"Please wait, we're preparing ads, please try again",
-  "cannotEmpty": "Cannot Be Empty !!!"
+  "cannotEmpty": "Cannot Be Empty !!!",
+  "pleaseWait": "Please wait...",
+  "letsJoin": "Let's Join"
 }

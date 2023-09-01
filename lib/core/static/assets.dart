@@ -1,4 +1,5 @@
 const logo = 'assets/icons/icon.png';
+const telegram = 'assets/icons/telegram.png';
 const male = 'assets/images/male.png';
 const female = 'assets/images/female.png';
 const hobby = 'assets/images/hobby.png';

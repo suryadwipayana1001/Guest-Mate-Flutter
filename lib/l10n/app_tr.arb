@@ -20,5 +20,7 @@
     "childName": "Çocuk Adı",
     "guessFutureChild": "Gelecekteki Çocuğunuzun Adını Tahmin Et",
     "adsWait": "Lütfen bekleyin, reklam hazırlanıyor. Daha sonra tekrar deneyin",
-    "cannotEmpty": "Boş Bırakılamaz !!!"
+    "cannotEmpty": "Boş Bırakılamaz !!!",
+    "pleaseWait": "Lütfen bekleyin...",
+    "letsJoin": "Katılalım"
 }

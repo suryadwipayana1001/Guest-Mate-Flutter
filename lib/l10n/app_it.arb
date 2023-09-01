@@ -20,5 +20,7 @@
     "childName": "Nome del bambino",
     "guessFutureChild": "Indovina il nome del tuo futuro figlio",
     "adsWait": "Attendi prego, stiamo preparando un annuncio, riprova più tardi",
-    "cannotEmpty": "Non può essere vuoto !!!"
+    "cannotEmpty": "Non può essere vuoto !!!",
+    "pleaseWait": "Attendere prego...",
+    "letsJoin": "Uniamoci"
 }

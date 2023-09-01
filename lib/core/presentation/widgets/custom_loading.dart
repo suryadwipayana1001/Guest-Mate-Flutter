@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:provider/provider.dart';
 import '../../core.dart';
 
 class CustomLoading extends StatelessWidget {
@@ -25,7 +24,7 @@ class CustomLoading extends StatelessWidget {
               thirdRingColor: Color.fromARGB(255, 255, 0, 166)),
           mediumVerticalSpacing(),
           Text(
-            'Harap Tunggu ...',
+            appLoc.pleaseWait,
             style: loadingTextStyle,
           )
         ],

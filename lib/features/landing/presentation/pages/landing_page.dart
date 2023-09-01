@@ -27,17 +27,24 @@ class _LandingPageState extends State<LandingPage> {
           child: Padding(
             padding: const EdgeInsets.all(sizeLarge),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Image.asset(
-                    logo,
-                    height: 200,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 80.0),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          logo,
+                          height: 200,
+                        ),
+                      ),
+                      Text(
+                        appLoc.appName,
+                        style: whiteTitleTextStyle,
+                      ),
+                    ],
                   ),
-                ),
-                Text(
-                  appLoc.appName,
-                  style: whiteTitleTextStyle,
                 ),
                 CustomDropdown(
                   value: provider.languageList[session.isIndex],
@@ -45,6 +52,7 @@ class _LandingPageState extends State<LandingPage> {
                   title: appLoc.selectLanguage,
                   onChanged: (value) {
                     provider.setLanguage = value;
+                    session.setLanguage = value!.value;
                     session.setIndexLanguage = value.index;
                   },
                 ),
@@ -59,7 +67,7 @@ class _LandingPageState extends State<LandingPage> {
             text: appLoc.start,
             onPressed: () {
               provider.initializeRewardAd();
-              session.setLanguage = provider.language!.value;
+
               Navigator.pushNamed(context, FormPage.routeName);
             },
           ),

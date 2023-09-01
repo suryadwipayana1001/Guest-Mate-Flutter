@@ -77,6 +77,14 @@ class _FormPageState extends State<FormPage> {
                           if (provider.formKey.currentState!.validate()) {
                             Navigator.pushNamed(
                                 context, CategoryPage.routeName);
+                            session.setIsOpenName = false;
+                            session.setIsOpenCriteria = false;
+                            session.setIsOpenWedding = false;
+                            session.setIsOpenChild = false;
+                            session.setResultName = '';
+                            session.setResultCriteria = '';
+                            session.setResultWedding = '';
+                            session.setResultChild = '';
                           }
                         },
                       ),

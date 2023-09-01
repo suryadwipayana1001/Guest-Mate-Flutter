@@ -16,6 +16,8 @@ class CategoryPage extends StatefulWidget {
   State<CategoryPage> createState() => _CategoryPageState();
 }
 
+final session = locator<Session>();
+
 class _CategoryPageState extends State<CategoryPage> {
   List<String> _categoryName = [
     appLoc.partnerName,
@@ -30,15 +32,12 @@ class _CategoryPageState extends State<CategoryPage> {
     appLoc.guessGetMarried,
     appLoc.guessFutureChild
   ];
-  List<String> type = [
-    "nama-jodoh",
-    "pekerjaan-jodoh",
-    "tanggal-nikah",
-    "nama-anak"
-  ];
+
   @override
   Widget build(BuildContext context) {
-    final loader = context.read<LoadingProvider>();
+    final loader = locator<GlobalKey<NavigatorState>>()
+        .currentContext!
+        .read<LoadingProvider>();
     return Consumer<CoreProvider>(builder: (context, provider, _) {
       return Scaffold(
         backgroundColor: primary,
@@ -63,59 +62,23 @@ class _CategoryPageState extends State<CategoryPage> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    provider.fetch(type[index]).listen(
-                                      (state) async {
-                                        if (provider.rewardAd == null) {
-                                          customToast(appLoc.adsWait);
-                                          provider.initializeRewardAd();
-                                          return;
-                                        }
-
-                                        provider.rewardAd!
-                                            .show(
-                                                onUserEarnedReward:
-                                                    (AdWithoutView ad,
-                                                        RewardItem
-                                                            rewardItem) {})
-                                            .then((value) {
-                                          switch (state.runtimeType) {
-                                            case ResultLoading:
-                                              loader.show();
-                                              break;
-                                            case ResultSuccess:
-                                              loader.hide();
-                                              Navigator.pushNamed(
-                                                locator<
-                                                        GlobalKey<
-                                                            NavigatorState>>()
-                                                    .currentContext!,
-                                                ResultPage.routeName,
-                                                arguments: {
-                                                  "title": _categoryName[index],
-                                                  "index": index == 0
-                                                      ? provider.isSelectedGender ==
-                                                              0
-                                                          ? 1
-                                                          : 0
-                                                      : index + 1
-                                                },
-                                              );
-                                              printWarning(
-                                                  "SUKSESS AMBIL DATA");
-                                              break;
-                                            case ResultFailure:
-                                              loader.hide();
-
-                                              final error =
-                                                  (state as ResultFailure)
-                                                      .error
-                                                      .message;
-                                              customToast(error);
-                                              printError("error $error");
-                                          }
-                                        });
-                                      },
-                                    );
+                                    if (index == 0) {
+                                      fetchData(provider, loader, index,
+                                          _categoryName, session.isOpenName);
+                                    } else if (index == 1) {
+                                      fetchData(
+                                          provider,
+                                          loader,
+                                          index,
+                                          _categoryName,
+                                          session.isOpenCriteria);
+                                    } else if (index == 2) {
+                                      fetchData(provider, loader, index,
+                                          _categoryName, session.isOpenWedding);
+                                    } else if (index == 3) {
+                                      fetchData(provider, loader, index,
+                                          _categoryName, session.isOpenChild);
+                                    }
                                   },
                                   child: CategoryItem(
                                       title: _categoryName[index],
@@ -127,16 +90,12 @@ class _CategoryPageState extends State<CategoryPage> {
                           },
                         ),
                       ),
-                      // CustomButton(
-                      //   text: appLoc.reset,
-                      //   onPressed: () {
-                      //     Navigator.pushNamedAndRemoveUntil(
-                      //       context,
-                      //       LandingPage.routeName,
-                      //       (route) => false,
-                      //     );
-                      //   },
-                      // ),
+                      CustomButton(
+                        text: appLoc.reset,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                       mediumVerticalSpacing(),
                       CustomVersion(),
                     ],
@@ -145,5 +104,95 @@ class _CategoryPageState extends State<CategoryPage> {
         ),
       );
     });
+  }
+}
+
+void fetchData(CoreProvider provider, LoadingProvider loader, int index,
+    List<String> _categoryName, bool isOpen) {
+  List<String> type = [
+    "nama-jodoh",
+    "pekerjaan-jodoh",
+    "tanggal-nikah",
+    "nama-anak"
+  ];
+  if (isOpen == false) {
+    provider.fetch(type[index]).listen(
+      (state) async {
+        if (provider.rewardAd == null) {
+          customToast(appLoc.adsWait);
+          provider.initializeRewardAd();
+          return;
+        }
+        provider.rewardAd!
+            .show(
+                onUserEarnedReward:
+                    (AdWithoutView ad, RewardItem rewardItem) {})
+            .then(
+          (value) {
+            switch (state.runtimeType) {
+              case ResultLoading:
+                loader.show();
+                break;
+              case ResultSuccess:
+                loader.hide();
+                if (index == 0) {
+                  session.setResultName = provider.result.toString();
+                  session.setIsOpenName = true;
+                } else if (index == 1) {
+                  session.setResultCriteria = provider.result.toString();
+                  session.setIsOpenCriteria = true;
+                } else if (index == 2) {
+                  session.setResultWedding = provider.result.toString();
+                  session.setIsOpenWedding = true;
+                } else if (index == 3) {
+                  session.setResultChild = provider.result.toString();
+                  session.setIsOpenChild = true;
+                }
+                Navigator.pushNamed(
+                  locator<GlobalKey<NavigatorState>>().currentContext!,
+                  ResultPage.routeName,
+                  arguments: {
+                    "title": _categoryName[index],
+                    "index": index == 0
+                        ? provider.isSelectedGender == 0
+                            ? 1
+                            : 0
+                        : index + 1
+                  },
+                );
+
+                break;
+              case ResultFailure:
+                loader.hide();
+
+                final error = (state as ResultFailure).error.message;
+                customToast(error);
+            }
+          },
+        );
+      },
+    );
+  } else {
+    if (index == 0) {
+      provider.setResult = session.resultName;
+    } else if (index == 1) {
+      provider.setResult = session.resultCriteria;
+    } else if (index == 2) {
+      provider.setResult = session.resultWedding;
+    } else if (index == 3) {
+      provider.setResult = session.resultChild;
+    }
+    Navigator.pushNamed(
+      locator<GlobalKey<NavigatorState>>().currentContext!,
+      ResultPage.routeName,
+      arguments: {
+        "title": _categoryName[index],
+        "index": index == 0
+            ? provider.isSelectedGender == 0
+                ? 1
+                : 0
+            : index + 1
+      },
+    );
   }
 }
