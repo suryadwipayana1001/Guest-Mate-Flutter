@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:forecasting/core/core.dart';
+import 'package:forecasting/core/presentation/providers/core_provider.dart';
 import 'package:forecasting/features/landing/presentation/pages/landing_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -18,6 +20,7 @@ class _SplashPageState extends State<SplashPage> {
       Duration(seconds: delay),
       () => {Navigator.pushReplacementNamed(context, LandingPage.routeName)},
     );
+    // context.read<CoreProvider>().initializeRewardAd();
     super.initState();
   }
 

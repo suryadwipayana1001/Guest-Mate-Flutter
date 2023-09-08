@@ -35,7 +35,7 @@ class CoreProvider with ChangeNotifier {
     DropdownOption(title: "Russian", value: "ru", index: 16),
     DropdownOption(title: "Spanish", value: "es", index: 17),
     DropdownOption(title: "Swedish", value: "sv", index: 18),
-    DropdownOption(title: "Turkish", value: "tr", index: 19)
+    DropdownOption(title: "Turkish", value: "tr", index: 19),
   ];
 
   String? _result;

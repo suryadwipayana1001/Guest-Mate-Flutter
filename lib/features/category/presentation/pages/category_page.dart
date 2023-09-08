@@ -118,60 +118,59 @@ void fetchData(CoreProvider provider, LoadingProvider loader, int index,
   if (isOpen == false) {
     provider.fetch(type[index]).listen(
       (state) async {
-        if (provider.rewardAd == null) {
-          customToast(appLoc.adsWait);
-          provider.initializeRewardAd();
-          return;
-        }
-        provider.rewardAd!
-            .show(
-                onUserEarnedReward:
-                    (AdWithoutView ad, RewardItem rewardItem) {})
-            .then(
-          (value) {
-            switch (state.runtimeType) {
-              case ResultLoading:
-                loader.show();
-                break;
-              case ResultSuccess:
-                loader.hide();
-                if (index == 0) {
-                  session.setResultName = provider.result.toString();
-                  session.setIsOpenName = true;
-                } else if (index == 1) {
-                  session.setResultCriteria = provider.result.toString();
-                  session.setIsOpenCriteria = true;
-                } else if (index == 2) {
-                  session.setResultWedding = provider.result.toString();
-                  session.setIsOpenWedding = true;
-                } else if (index == 3) {
-                  session.setResultChild = provider.result.toString();
-                  session.setIsOpenChild = true;
-                }
-                Navigator.pushNamed(
-                  locator<GlobalKey<NavigatorState>>().currentContext!,
-                  ResultPage.routeName,
-                  arguments: {
-                    "title": _categoryName[index],
-                    "index": index == 0
-                        ? provider.isSelectedGender == 0
-                            ? 1
-                            : 0
-                        : index + 1
-                  },
-                );
-
-                break;
-              case ResultFailure:
-                loader.hide();
-
-                final error = (state as ResultFailure).error.message;
-                customToast(error);
+        // if (provider.rewardAd == null) {
+        //   customToast(appLoc.adsWait);
+        //   provider.initializeRewardAd();
+        //   return;
+        // }
+        // provider.rewardAd!
+        //     .show(
+        //         onUserEarnedReward:
+        //             (AdWithoutView ad, RewardItem rewardItem) {})
+        //     .then(
+        //   (value) {
+        switch (state.runtimeType) {
+          case ResultLoading:
+            loader.show();
+            break;
+          case ResultSuccess:
+            if (index == 0) {
+              session.setResultName = provider.result.toString();
+              session.setIsOpenName = true;
+            } else if (index == 1) {
+              session.setResultCriteria = provider.result.toString();
+              session.setIsOpenCriteria = true;
+            } else if (index == 2) {
+              session.setResultWedding = provider.result.toString();
+              session.setIsOpenWedding = true;
+            } else if (index == 3) {
+              session.setResultChild = provider.result.toString();
+              session.setIsOpenChild = true;
             }
-          },
-        );
+            Navigator.pushNamed(
+              locator<GlobalKey<NavigatorState>>().currentContext!,
+              ResultPage.routeName,
+              arguments: {
+                "title": _categoryName[index],
+                "index": index == 0
+                    ? provider.isSelectedGender == 0
+                        ? 1
+                        : 0
+                    : index + 1
+              },
+            );
+            loader.hide();
+            break;
+          case ResultFailure:
+            loader.hide();
+
+            final error = (state as ResultFailure).error.message;
+            customToast(error);
+        }
       },
     );
+    //   },
+    // );
   } else {
     if (index == 0) {
       provider.setResult = session.resultName;

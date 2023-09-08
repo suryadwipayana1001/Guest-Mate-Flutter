@@ -61,7 +61,7 @@ class _MainAppState extends State<MainApp> {
               Locale('ru', ''),
               Locale('es', ''),
               Locale('sv', ''),
-              Locale('tr', '')
+              Locale('tr', ''),
             ],
             home: const SplashPage(),
           );

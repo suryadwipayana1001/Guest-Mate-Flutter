@@ -66,8 +66,6 @@ class _LandingPageState extends State<LandingPage> {
           child: CustomButton(
             text: appLoc.start,
             onPressed: () {
-              provider.initializeRewardAd();
-
               Navigator.pushNamed(context, FormPage.routeName);
             },
           ),
